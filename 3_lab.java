@@ -163,63 +163,82 @@ class TicketingSystem {
 public class Main {
     public static void main(String[] args) {
         TicketingSystem ticketingSystem = new TicketingSystem();
-
         Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("1. Add Cinema");
-            System.out.println("2. Add Theater");
-            System.out.println("3. Book Ticket");
-            System.out.println("4. Print Seat Plan");
-            System.out.println("5. Exit");
-            System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter cinema name: ");
-                    String cinemaName = scanner.nextLine();
-                    ticketingSystem.addCinema(cinemaName);
-                    break;
-                case 2:
-                    System.out.print("Enter cinema name: ");
-                    cinemaName = scanner.nextLine();
-                    System.out.print("Enter movie name: ");
-                    String movieName = scanner.nextLine();
-                    System.out.print("Enter movie start time: ");
-                    String time = scanner.nextLine();
-                    System.out.print("Enter theater name: ");
-                    String theaterName = scanner.nextLine();
-                    System.out.print("Enter movie duration in minutes: ");
-                    int duration = scanner.nextInt();
-                    System.out.print("Enter theater capacity: ");
-                    int capacity = scanner.nextInt();
-                    scanner.nextLine();
-                    ticketingSystem.addTheater(cinemaName, movieName, new Theater(theaterName, capacity), duration, time);
-                    break;
-                case 3:
-                    System.out.print("Enter cinema name: ");
-                    cinemaName = scanner.nextLine();
-                    System.out.print("Enter movie name: ");
-                    movieName = scanner.nextLine();
-                    System.out.print("Enter theater name: ");
-                    theaterName = scanner.nextLine();
-                    System.out.print("Enter seat number: ");
-                    int seatNumber = scanner.nextInt();
-                    scanner.nextLine();
-                    ticketingSystem.bookTicket(cinemaName, movieName, theaterName, seatNumber);
-                    break;
-                case 4:
-                    System.out.print("Enter cinema name: ");
-                    cinemaName = scanner.nextLine();
-                    System.out.print("Enter movie name: ");
-                    movieName = scanner.nextLine();
-                    System.out.print("Enter theater name: ");
-                    theaterName = scanner.nextLine();
-                    ticketingSystem.printSeatPlan(cinemaName, movieName, theaterName);
-                    break;
-                case 5:
-                    System.exit(0);
+        System.out.println("Admin or user? Write '1' or '2'");
+        Integer reply = scanner.nextInt();
+        if (reply == 1) {
+            while (true) {
+                System.out.println("1. Add Cinema");
+                System.out.println("2. Add Theater");
+                System.out.println("3. Exit");
+                System.out.print("Enter your choice: ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter cinema name: ");
+                        String cinemaName = scanner.nextLine();
+                        ticketingSystem.addCinema(cinemaName);
+                        break;
+                    case 2:
+                        System.out.print("Enter cinema name: ");
+                        cinemaName = scanner.nextLine();
+                        System.out.print("Enter movie name: ");
+                        String movieName = scanner.nextLine();
+                        System.out.print("Enter movie start time: ");
+                        String time = scanner.nextLine();
+                        System.out.print("Enter theater name: ");
+                        String theaterName = scanner.nextLine();
+                        System.out.print("Enter movie duration in minutes: ");
+                        int duration = scanner.nextInt();
+                        System.out.print("Enter theater capacity: ");
+                        int capacity = scanner.nextInt();
+                        scanner.nextLine();
+                        ticketingSystem.addTheater(cinemaName, movieName, new Theater(theaterName, capacity), duration, time);
+                        break;
+                    case 3:
+                        System.exit(0);
+                }
             }
+        }
+        if (reply == 2) {
+            while (true) {
+                System.out.println("1. Book Ticket");
+                System.out.println("2. Print Seat Plan");
+                System.out.println("3. Exit");
+                System.out.print("Enter your choice: ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter cinema name: ");
+                        String cinemaName = scanner.nextLine();
+                        System.out.print("Enter movie name: ");
+                        String movieName = scanner.nextLine();
+                        System.out.print("Enter theater name: ");
+                        String theaterName = scanner.nextLine();
+                        System.out.print("Enter seat number: ");
+                        int seatNumber = scanner.nextInt();
+                        scanner.nextLine();
+                        ticketingSystem.bookTicket(cinemaName, movieName, theaterName, seatNumber);
+                        break;
+                    case 2:
+                        System.out.print("Enter cinema name: ");
+                        cinemaName = scanner.nextLine();
+                        System.out.print("Enter movie name: ");
+                        movieName = scanner.nextLine();
+                        System.out.print("Enter theater name: ");
+                        theaterName = scanner.nextLine();
+                        ticketingSystem.printSeatPlan(cinemaName, movieName, theaterName);
+                        break;
+                    case 3:
+                        System.exit(0);
+                }
+            }
+        }
+        else
+        {
+            System.out.print("Wrong Reply ");
         }
     }
 }
